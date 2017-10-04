@@ -9,18 +9,18 @@
  * 1   3.634 72.68  73    192.168.1.21 *
  * 2   3.142 62.84  63    192.168.1.22 *
  * 3   4.712 94.24  95    192.168.1.23 *
- * 4   5.694 113.88 114   192.168.1.24 *
- * 5   2.827 56.54  57    192.168.1.25 *
- * 6   2.827 56.54  57    192.168.1.26 *
+ * 4   5.694 113.88 114   192.168.1.24 * 
  * 7   2.827 56.54  57    192.168.1.27 *
- * 8   3.829 76.58  77    192.168.1.28 *
- * 9   5.95  119    119   192.168.1.29 *
- * 10  4.678 93.56  94    192.168.1.30
+ * 5   2.827 56.54  57    192.168.1.25 * 
+ * 8   2.827 56.54  57    192.168.1.28 * 
+ * 9   3.829 76.58  77    192.168.1.29 *
+ * 10  5.95  119    119   192.168.1.30 *
+ * 6   4.678 93.56  94    192.168.1.26 *
  */
 
-#define IP_ADDRESS 30 // last number of IP address
-#define NODE_NAME "aiml10"
-#define NUM_LEDS    94
+#define IP_ADDRESS 21 // last number of IP address
+#define NODE_NAME "aiml1"
+#define NUM_LEDS    73
 
 
 #include <ESP8266WiFi.h>
@@ -50,8 +50,8 @@ int brightness = 150;
 //#define BRIGHTNESS          96
 #define FRAMES_PER_SECOND  120
  
-const char *ssid = "ssid";
-const char *password = "password";
+const char *ssid = "AIML";
+const char *password = "password"; // change to real password
  
 MDNSResponder mdns;
 ESP8266WebServer server ( 80 );
@@ -352,5 +352,4 @@ void dim()
   Serial.print("Brightness: ");
   Serial.println(brightness);
 }
-
 
