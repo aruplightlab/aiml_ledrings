@@ -18,9 +18,9 @@
  * 6   4.678 93.56  94    192.168.1.26 *
  */
 
-#define IP_ADDRESS 21 // last number of IP address
-#define NODE_NAME "aiml1"
-#define NUM_LEDS    73
+#define IP_ADDRESS 25 // last number of IP address
+#define NODE_NAME "aiml5"
+#define NUM_LEDS    57
 
 
 #include <ESP8266WiFi.h>
@@ -46,6 +46,7 @@ CRGBPalette16 palette = PartyColors_p;
 
 int transition = 1;
 int brightness = 150;
+int reset_time = 1*60*60*1000;
 
 //#define BRIGHTNESS          96
 #define FRAMES_PER_SECOND  120
@@ -256,12 +257,17 @@ void loop ( void ) {
     else if (transition==2) t_bpm();
     else if (transition==3) t_gradient();
     else if (transition==4) t_random();
+    // reset if reset time has passed
+    if (millis() > reset_time) {
+      ESP.restart();
+    }
     // send the 'leds' array out to the actual LED strip
     FastLED.show();  
     // insert a delay to keep the framerate modest
     FastLED.delay(1000/FRAMES_PER_SECOND); 
     // do some periodic updates
     EVERY_N_MILLISECONDS( 20 ) { idx++; } // slowly cycle the index variable
+    //EVERY_N_MILLISECONDS(5000) { Serial.println(millis()); }
 }
 
 void setColor(int color) {
