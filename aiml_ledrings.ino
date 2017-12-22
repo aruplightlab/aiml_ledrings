@@ -260,9 +260,9 @@ void loop ( void ) {
     else if (transition==3) t_gradient();
     else if (transition==4) t_random();
     // reset if reset time has passed
-    if (millis() > reset_time) {
-      ESP.restart();
-    }
+    //if (millis() > reset_time) {
+    //  ESP.restart();
+    //}
     // send the 'leds' array out to the actual LED strip
     FastLED.show();  
     // insert a delay to keep the framerate modest
